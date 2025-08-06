@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ai-career-backend
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && node index.js
+    rootDir: server
+    envVars:
+      - key: PORT
+        value: 10000
+
+  - type: web
+    name: ai-career-frontend
+    env: static
+    plan: free
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/build
+    rootDir: client
